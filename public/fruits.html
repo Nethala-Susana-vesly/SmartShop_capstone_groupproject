@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Grocery Items</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(#e2f9e1, #ffffff);
+            padding: 30px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow:hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            color: #146356;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .price {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .price s {
+            color: red;
+            margin-left: 5px;
+            font-size: 14px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-cart {
+            background-color: #146356;
+            color: white;
+        }
+
+        .add-cart:hover {
+            background-color: #0c3d34;
+        }
+
+        .order-now {
+            background-color: white;
+            color: #146356;
+            border: 2px solid #146356;
+        }
+
+        .order-now:hover {
+            background-color: #146356;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align:center; margin-bottom:20px; color:#146356; font-weight: 30px;"> Fruits</h1>
+
+    <div class="container">
+
+        <div class="card">
+            <img src="images/apples.jpg" alt="apple">
+            <h3>Apple</h3>
+
+            <p>Quantity: dozen</p>
+            <div class="price">
+                <strong>Cost: 275/-</strong>
+            </div>
+            <button class="btn add-cart" onclick="addToCart('Apple')">ADD TO CART 🛒</button>
+            <button class="btn order-now" onclick="orderNow('Apple',275)">ORDER NOW 🛍</button>
+        </div>
+    
+
+    <div class="card">
+        <img src="images/straberry.jpg" alt="strawberry">
+        <h3>strawberry</h3>
+        <p>Quantity: 1kg</p>
+        <div class="price">
+            <strong>Cost: 370/-</strong>
+        </div>
+        <button class="btn add-cart" onclick="addToCart('strawberry')">ADD TO CART 🛒</button>
+        <button class="btn order-now" onclick="orderNow('strawberry',370)">ORDER NOW 🛍</button>
+    </div>
+
+
+    <div class="card">
+        <img src="images/avacado.jpg" alt="avocado">
+        <h3>Avocado</h3>
+        <p>Quantity: 1kg</p>
+        <div class="price">
+            <strong>Cost: 390/-</strong>
+        </div>
+        <button class="btn add-cart" onclick="addToCart('Avocado')">ADD TO CART 🛒</button>
+        <button class="btn order-now" onclick="orderNow('Avocado',390)">ORDER NOW 🛍</button>
+    </div>
+    </div>
+
+   <script>
+        // ✅ ADD TO CART: Add item to localStorage and redirect to cart
+        function addToCart(item) {
+            let price = 0;
+            let image = '';
+
+            if (item === 'Apple') {
+                price = 75;
+                image = 'images/apples.jpg';
+            } else if (item === 'strawberry') {
+                price = 70;
+                image = 'images/straberry.jpg';
+            } else if (item === 'Avocado') {
+                price = 90;
+                image = 'images/avacado.jpg';
+            }
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: item, price: price, image: image });
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(item + " added to cart!");
+            window.location.href = "cart.html";
+        }
+
+            // ✅ ORDER NOW: Add item to 'orders' and go to orders.html
+            function orderNow(itemName, cost) {
+                const orderItem = {
+                    name: itemName,
+                    cost: cost
+                };
+
+                let orders = JSON.parse(localStorage.getItem("orders")) || [];
+                orders.push(orderItem);
+                localStorage.setItem("orders", JSON.stringify(orders));
+
+                alert("Order placed successfully for " + itemName + "!");
+                window.location.href = "orders.html"; // ✅ Redirect to orders
+            }
+    </script>
+
+
+
+</body>
+
+</html>

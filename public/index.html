@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grocery Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<style>
+  /* General Reset */
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+
+  body {
+    background: #fff;
+    color: #333;
+  }
+
+
+
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #fbfbf9;
+    color: #333;
+    padding: 30px;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .icons {
+    font-weight: 100px;
+    text-decoration: none;
+    color: #50b760;
+  }
+
+  .logo span {
+    color: green;
+  }
+
+  .icons a {
+    justify-content: space-between;
+    margin: 20px;
+    padding-left: -10px;
+  }
+
+
+  .search-container {
+    position: relative;
+    width: 390px;
+    /* or any width you want */
+    margin-left: 30px;
+    display: flex;
+  }
+
+  .search-container input[type="text"] {
+
+    padding: 10px 166px 10px 10px;
+    /* right padding for the icon */
+    font-size: 16px;
+    border: 3px solid #50b760;
+    border-radius: 50px;
+    box-sizing: border-box;
+  }
+
+  .search-container .search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #fcfbfb;
+    cursor: pointer;
+    border: none;
+    width: 39px;
+    height: 39px;
+    align-items: center;
+    border-radius: 50%;
+    padding-left: 10px;
+    display: flex;
+    background-color: #50b760;
+    background-size: 20px;
+  }
+
+
+
+  /* Banner */
+  .banner {
+    display: flex;
+    height: 480px;
+    background-image: url('images/ban2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+  }
+
+  .banner-text {
+    border: none;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    justify-content: center;
+    width: 500px;
+    height: 300px;
+    color: #fff;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: 70px 500px 50px 500px;
+  }
+
+  .banner-text h4 {
+    color: #69ca77;
+    font-size: 30px;
+  }
+
+  .banner-text button {
+    padding: 10px 20px;
+    background: #7d9d35;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+  }
+
+  .cathead h2 {
+    text-align: center;
+    margin-left: 50px;
+    color: #2e7d32;
+    font-size: 30px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 60px;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .Categories {
+    padding-top: 30px;
+    background-color: #90faa0;
+  }
+
+  .card {
+    width: 280px;
+    background-color: #f0f0f0;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 4px 7px 7px 0px rgba(123, 135, 168, 0.4);
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .picinfo h3 {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 18px;
+  }
+
+  .features {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    border-radius: 12px;
+    margin: 30px 40px;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: none;
+  }
+
+  .feature {
+    flex: 1;
+    width: 80px;
+    text-align: center;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 70px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature i {
+    font-size: 36px;
+    color: #2e7d32;
+    margin-bottom: 15px;
+  }
+
+  .feature h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .feature p {
+    font-size: 14px;
+    color: #666;
+  }
+
+
+  .icons i:hover{
+    color: rgb(161, 223, 179);
+  }
+   
+   footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  font-size: 14px;
+}
+
+</style>
+
+<body>
+
+
+  <!-- Header -->
+  <header>
+    <div class="logo">ShopSmart<span>GroceryWeb</span></div>
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Search..." />
+      <label for="search" class="search-icon"><i class="fas fa-search"></i></label>
+    </div>
+    <div class="icons">
+      <b>
+        <a onclick="window.location.href='index.html'">Home</a>
+        <a onclick="window.location.href='/login'">Login/Register</a>
+        <a onclick="window.location.href='cart.html'">Cart</a>
+        <a onclick="window.location.href='orders.html'">Orders</a>
+        
+      </b>
+    </div>
+
+  </header>
+
+
+
+  <!-- Banner -->
+
+  <section>
+    <div class="banner">
+      <div class="banner-text">
+        <h4>ORGANIC FOOD</h4><br>
+        <h2>Looking for </h2><br>
+        <h2>the fresh Organic Food</h2><br>
+        <button>SHOP NOW</button>
+      </div>
+    </div>
+  </section>
+  <!--features-->
+  <section class="features">
+    <div class="feature">
+      <i class="fas fa-shipping-fast"></i>
+      <h4>Fast Shipping</h4>
+      <p>Get your groceries delivered quickly.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-headset"></i>
+      <h4>Support 24/7</h4>
+      <p>Customer service available anytime.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-undo"></i>
+      <h4>100% Money Back</h4>
+      <p>Guaranteed refund if you're not satisfied.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-shield-alt"></i>
+      <h4>Payment Secure</h4>
+      <p>All transactions are safe and encrypted.</p>
+    </div>
+  </section>
+
+
+  <!-- Categories-->
+  <section class="Categories">
+    <div class="cathead">
+      <h2>Our Catogeries</h2>
+    </div>
+    <section>
+      <div class="container">
+        <div class="card">
+          <img src="images/vegg.jpg" id="vegImage" alt="vegetables">
+          <div class="picinfo">
+            <h3>vegetables</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/fruits.jpg" id="fruImage" alt="Fruits">
+          <div class="picinfo">
+            <h3>Fruits</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/grains.jpg" id="dgImage" alt="DryGroceries">
+          <div class="picinfo">
+            <h3>DryGroceries</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/cerels.jpg" id="stapleImage" alt="staples">
+          <div class="picinfo">
+            <h3>staples grains</h3>
+          </div>
+        </div>
+
+
+
+        <div class="card">
+          <img src="images/dairy.jpg" id="dairyImage" alt="dairy">
+          <div class="picinfo">
+            <h3>Dairy</h3>
+          </div>
+        </div>
+
+
+
+        <div class="card">
+          <img src="images/pg.jpg" id="pfImage" alt="pg">
+          <div class="picinfo">
+            <h3>PackagedFood</h3>
+          </div>
+        </div>
+    </section>
+
+  </section>
+
+  <section>
+    <footer>
+  <p>&copy; 2025 ShopSmart. All rights reserved.</p>
+</footer>
+
+   </section>
+
+  <script>
+
+    document.getElementById("vegImage").addEventListener("click", function () {
+      window.location.href = "veg.html";
+    });
+
+    document.getElementById("fruImage").addEventListener("click", function () {
+      window.location.href = "fruits.html";
+    });
+
+
+    document.getElementById("dgImage").addEventListener("click", function () {
+      window.location.href = "drygroceries.html";
+    });
+
+    document.getElementById("stapleImage").addEventListener("click", function () {
+      window.location.href = "items.html";
+    });
+
+
+    document.getElementById("dairyImage").addEventListener("click", function () {
+      window.location.href = "dairy.html";
+    });
+
+
+    document.getElementById("pfImage").addEventListener("click", function () {
+      window.location.href = "packedfoods.html";
+    });
+
+
+    
+    const loginLink = document.querySelector('a[href="/login"]');
+    loginLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = "/login"; // Redirect to login.ejs route
+    });
+
+
+    //cart functionality
+    function addToCart(name, price, image) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  const item = {
+    name: name,
+    price: price,
+    image: image
+  };
+
+  cart.push(item);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert(`${name} added to cart!`);
+}
+
+
+
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Orders</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0fdf4;
+      padding: 30px;
+    }
+
+    .order-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #146356;
+    }
+
+    .order-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+      font-size: 18px;
+    }
+
+    .total {
+      font-size: 20px;
+      font-weight: bold;
+      color: #146356;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .empty {
+      text-align: center;
+      color: #888;
+      font-size: 18px;
+    }
+
+    button.clear {
+      display: block;
+      margin: 20px auto 0;
+      background-color: #c0392b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button.clear:hover {
+      background-color: #a93226;
+    }
+  </style>
+</head>
+<body>
+  <div class="order-container">
+    <h2>Your Orders</h2>
+    <div id="order-list"></div>
+    <div id="total-cost" class="total"></div>
+    <button class="clear" onclick="clearOrders()">Clear Orders</button>
+  </div>
+
+  <script>
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    const orderList = document.getElementById("order-list");
+    const totalCost = document.getElementById("total-cost");
+
+    if (orders.length === 0) {
+      orderList.innerHTML = `<div class="empty">No items ordered yet.</div>`;
+      totalCost.innerHTML = "";
+    } else {
+      let total = 0;
+      orderList.innerHTML = orders.map(item => {
+        total += item.cost;
+        return `<div class="order-item">🍀 <strong>${item.name}</strong> - ₹${item.cost}</div>`;
+      }).join("");
+
+      totalCost.innerHTML = `Total Cost: ₹${total}`;
+    }
+
+    function clearOrders() {
+      localStorage.removeItem("orders");
+      location.reload();
+    }
+  </script>
+</body>
+</html>
