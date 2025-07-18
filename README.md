@@ -5,7 +5,9 @@ our basic grocery-web app! Our app is designed to provide a seamless online shop
 With user-friendly navigation and intuitive design, our grocery-webapp app allows customers to browse through various categories, view product details, add items to their cart, and securely complete the checkout process. We prioritize user satisfaction and aim to provide a smooth and hassle-free shopping experience.
 
 ## License:
+
 The content of the project are available in the below data in the link formate:
+
 🔗Drive:
 https://drive.google.com/drive/folders/144iWivzvzt31Y9FkX5KUqUoyfZdHcM_I?usp=sharing
 
